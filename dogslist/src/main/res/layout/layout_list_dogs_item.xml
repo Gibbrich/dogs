@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_margin="5dp"
+        android:elevation="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
 
     <ImageView
             android:id="@+id/list_dogs_item_breed_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:padding="5dp"
             tools:srcCompat="@tools:sample/avatars"
             />
-</LinearLayout>
+</androidx.cardview.widget.CardView>

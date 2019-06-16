@@ -17,6 +17,7 @@ object DogsConverter {
 
     private fun fromUrl(url: String): Breed {
         val breed = url.substringAfter("images.dog.ceo/breeds/").substringBefore("/")
+        // todo - put last part in front for subbreeds
         val name = breed.replace("-", " ").capitalize()
         return Breed(
             name,

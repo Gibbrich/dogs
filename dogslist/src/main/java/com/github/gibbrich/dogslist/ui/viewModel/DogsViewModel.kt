@@ -1,5 +1,7 @@
 package com.github.gibbrich.dogslist.ui.viewModel
 
+import android.util.Log
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.github.gibbrich.core.manager.Navigator
 import com.github.gibbrich.core.model.Breed
@@ -33,7 +35,7 @@ class DogsViewModel: BaseViewModel() {
     fun fetchAlbums() {
         safeSubscribe {
             dogsRepository
-                .getRandomBreeds(PHOTOS_TO_FETCH, isFirstPhotosLoad)
+                .getRandomBreeds(PHOTOS_TO_FETCH, isFirstPhotosLoad.not())
                 .schedulersIoToMain()
                 .doOnSubscribe { state.value = State.Loading }
                 .subscribe(this::handleAnswer, this::handleError)
@@ -52,6 +54,7 @@ class DogsViewModel: BaseViewModel() {
         state.value = State.LoadError
     }
 
+    // todo - change LoadError to event
     sealed class State {
         object LoadError: State()
         object Loading: State()

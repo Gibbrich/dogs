@@ -32,7 +32,7 @@ dependencies {
 
     implementation(Deps.common.appCompat)
     implementation(Deps.common.constraint)
-    implementation(Deps.common.swipeREfresh)
+    implementation(Deps.common.swipeRefresh)
     implementation(Deps.common.arch)
     implementation(Deps.common.vm)
     implementation(Deps.common.glide) {

@@ -25,9 +25,8 @@ abstract class ConstantValueAdapter<T, VH : RecyclerView.ViewHolder>(
 
     abstract fun bind(holder: VH, item: T, position: Int)
 
-    fun replaceData(data: List<T>) {
-        items.clear()
-        items.addAll(data)
-        notifyDataSetChanged()
+    fun addDataToStart(data: List<T>) {
+        items.addAll(0, data)
+        notifyItemRangeChanged(0, data.size)
     }
 }

@@ -5,16 +5,17 @@ object Deps {
 
     object app {
         private const val navigationVersion = "2.0.0"
-        const val navigationFragment = "androidx.navigation:navigation-fragment:$navigationVersion"
-        const val navigationUi = "androidx.navigation:navigation-ui:$navigationVersion"
+        const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+        const val navigationUi = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
     }
 
     object common {
         const val constraint = "androidx.constraintlayout:constraintlayout:1.1.3"
-        const val swipeREfresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+        const val swipeRefresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
         const val arch = "androidx.arch.core:core-common:2.0.0"
         const val vm = "android.arch.lifecycle:extensions:1.1.1"
         const val recycler = "androidx.recyclerview:recyclerview:1.0.0"
+        const val cardView = "androidx.cardview:cardview:1.0.0"
         const val appCompat = "androidx.appcompat:appcompat:1.0.0-beta01"
         
         const val glide = "com.github.bumptech.glide:glide:4.9.0"

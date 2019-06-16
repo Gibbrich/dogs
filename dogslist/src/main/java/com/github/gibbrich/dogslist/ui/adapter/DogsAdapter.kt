@@ -18,7 +18,12 @@ class DogsAdapter(
     override val lineResourceId = R.layout.layout_list_dogs_item
 
     override fun bind(holder: Holder, item: Breed, position: Int) {
-        // todo - download picture
+        // todo - add placeholder for loading and error
+        Glide.with(holder.itemView)
+            .load(item.photoUrl)
+            .centerCrop()
+            .into(holder.picture)
+
         holder.picture.setOnClickListener { onDogClicked.invoke(item) }
     }
 

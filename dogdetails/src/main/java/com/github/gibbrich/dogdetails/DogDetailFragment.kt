@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.github.gibbrich.core.model.Breed
 import kotlinx.android.synthetic.main.fragment_dog_detail.*
 import java.lang.IllegalStateException
@@ -37,6 +38,9 @@ class DogDetailFragment: Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         fragment_dog_detail_breed_title.text = args.name
-        // todo - download picture
+        // todo - check working offline
+        Glide.with(this)
+            .load(args.photoUrl)
+            .into(fragment_dog_detail_breed_image)
     }
 }
