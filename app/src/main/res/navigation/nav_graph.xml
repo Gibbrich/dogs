@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/dogsListFragment">
+    <fragment
+            android:id="@+id/dogsListFragment"
+            android:name="com.github.gibbrich.dogslist.ui.fragment.DogsListFragment"
+            android:label="DogsListFragment"
+            tools:layout="@layout/fragment_dogs_list">
+        <!--todo - add animated navigation-->
+        <action
+                android:id="@+id/action_dogsListFragment_to_dogDetailFragment"
+                app:destination="@id/dogDetailFragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/dogDetailFragment"
+            android:name="com.github.gibbrich.dogdetails.DogDetailFragment"
+            android:label="DogDetailFragment"
+            tools:layout="@layout/fragment_dog_detail"/>
+</navigation>
