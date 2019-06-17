@@ -3,6 +3,7 @@ package com.github.gibbrich.dogs.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.github.gibbrich.dogs.R
 import com.github.gibbrich.dogs.di.DI
 import com.github.gibbrich.dogs.manager.NavigationManager
@@ -19,6 +20,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         DI.appComponent.inject(this)
+
+        setupActionBarWithNavController(findNavController(nav_host_fragment))
     }
 
     override fun onResume() {
@@ -32,4 +35,6 @@ class MainActivity : AppCompatActivity() {
 
         navigationManager.navController = null
     }
+
+    override fun onSupportNavigateUp(): Boolean = findNavController(nav_host_fragment).navigateUp()
 }

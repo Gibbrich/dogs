@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.github.gibbrich.core.model.Breed
@@ -37,10 +38,10 @@ class DogDetailFragment: Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        fragment_dog_detail_breed_title.text = args.name
-        // todo - check working offline
         Glide.with(this)
             .load(args.photoUrl)
             .into(fragment_dog_detail_breed_image)
+
+        (activity as? AppCompatActivity)?.supportActionBar?.title = args.name
     }
 }

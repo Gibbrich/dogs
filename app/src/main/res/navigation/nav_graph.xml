@@ -7,9 +7,8 @@
     <fragment
             android:id="@+id/dogsListFragment"
             android:name="com.github.gibbrich.dogslist.ui.fragment.DogsListFragment"
-            android:label="DogsListFragment"
+            android:label="@string/fragment_dogs_list_title"
             tools:layout="@layout/fragment_dogs_list">
-        <!--todo - replace animated navigation to shared image transition-->
         <action
                 android:id="@+id/action_dogsListFragment_to_dogDetailFragment"
                 app:destination="@id/dogDetailFragment"
@@ -19,6 +18,5 @@
     <fragment
             android:id="@+id/dogDetailFragment"
             android:name="com.github.gibbrich.dogdetails.DogDetailFragment"
-            android:label="DogDetailFragment"
             tools:layout="@layout/fragment_dog_detail"/>
 </navigation>

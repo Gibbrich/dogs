@@ -1,7 +1,5 @@
 package com.github.gibbrich.dogslist.ui.viewModel
 
-import android.util.Log
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.github.gibbrich.core.manager.Navigator
 import com.github.gibbrich.core.model.Breed
@@ -23,42 +21,44 @@ class DogsViewModel: BaseViewModel() {
     @Inject
     internal lateinit var navigator: Navigator
 
-    private var isFirstPhotosLoad = true
-
     init {
         DI.dogsComponent.inject(this)
-        state.value = State.Empty
+        state.value = State()
     }
 
     fun onDogClicked(breed: Breed) = navigator.switchToBreedDetailScreen(breed)
 
     fun fetchAlbums() {
+        val isCacheDirty = state.value?.isFirstPhotoLoad?.not() ?: false
         safeSubscribe {
             dogsRepository
-                .getRandomBreeds(PHOTOS_TO_FETCH, isFirstPhotosLoad.not())
+                .getRandomBreeds(PHOTOS_TO_FETCH, isCacheDirty)
                 .schedulersIoToMain()
-                .doOnSubscribe { state.value = State.Loading }
+                .doOnSubscribe {
+                    state.value = state.value?.copy(isLoading = true)
+                }
                 .subscribe(this::handleAnswer, this::handleError)
         }
     }
 
-    private fun handleAnswer(albums: List<Breed>) {
-        if (isFirstPhotosLoad) {
-            isFirstPhotosLoad = false
-        }
-
-        state.value = State.Loaded(albums)
+    private fun handleAnswer(breeds: List<Breed>) {
+        state.value = State(
+            isFirstPhotoLoad = false,
+            breeds = breeds
+        )
     }
 
     private fun handleError(err: Throwable) {
-        state.value = State.LoadError
+        state.value = state.value?.copy(
+            isLoading = false,
+            isLoadError = true
+        )
     }
 
-    // todo - change LoadError to event
-    sealed class State {
-        object LoadError: State()
-        object Loading: State()
-        object Empty: State()
-        data class Loaded(val albums: List<Breed>): State()
-    }
+    data class State(
+        val isLoading: Boolean = false,
+        val isLoadError: Boolean = false,
+        val isFirstPhotoLoad: Boolean = true,
+        val breeds: List<Breed> = emptyList()
+    )
 }

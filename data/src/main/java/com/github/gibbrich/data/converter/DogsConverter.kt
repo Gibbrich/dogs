@@ -16,11 +16,19 @@ object DogsConverter {
     }
 
     private fun fromUrl(url: String): Breed {
-        val breed = url.substringAfter("images.dog.ceo/breeds/").substringBefore("/")
-        // todo - put last part in front for subbreeds
-        val name = breed.replace("-", " ").capitalize()
+        val fullBreed = url.substringAfter("images.dog.ceo/breeds/").substringBefore("/")
+        val parts = fullBreed.split("-")
+        val name = if (parts.size > 1) {
+            val subBreed = parts[parts.lastIndex]
+            val breed = parts.subList(0, parts.lastIndex).joinToString(" ")
+
+            "$subBreed $breed"
+        } else {
+            parts[0]
+        }
+
         return Breed(
-            name,
+            name.capitalize(),
             url
         )
     }

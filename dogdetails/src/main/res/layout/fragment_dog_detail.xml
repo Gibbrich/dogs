@@ -5,14 +5,6 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <!--todo - add style-->
-    <TextView
-            android:id="@+id/fragment_dog_detail_breed_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Hound"
-            />
-
     <ImageView
             android:id="@+id/fragment_dog_detail_breed_image"
             android:layout_width="match_parent"

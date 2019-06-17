@@ -27,11 +27,11 @@ class DogsListFragment : Fragment() {
         false
     )
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val vm = ViewModelProviders.of(this).get(DogsViewModel::class.java)
-        vm.state.observe(this, Observer(::handleState))
+        vm.state.observe(this, Observer(::handleStateNew))
 
         fragment_dogs_list_swipe_layout.setOnRefreshListener(vm::fetchAlbums)
 
@@ -40,31 +40,18 @@ class DogsListFragment : Fragment() {
         fragment_dogs_list.adapter = adapter
     }
 
-    private fun handleState(state: DogsViewModel.State) = when (state) {
-        DogsViewModel.State.LoadError -> {
-            fragment_dogs_list_empty_label.text = getString(R.string.fragment_dogs_list_error_occured)
-            fragment_dogs_list_empty_label.visibility = View.VISIBLE
-            fragment_dogs_list_swipe_layout.isRefreshing = false
-        }
+    private fun handleStateNew(state: DogsViewModel.State) {
+        fragment_dogs_list_swipe_layout.isRefreshing = state.isLoading
 
-        DogsViewModel.State.Loading -> {
-            fragment_dogs_list_empty_label.visibility = View.GONE
-            fragment_dogs_list_swipe_layout.isRefreshing = true
-        }
-
-        DogsViewModel.State.Empty -> {
-            fragment_dogs_list_empty_label.text = getString(R.string.fragment_dogs_list_no_data)
+        if (state.breeds.isEmpty()) {
             fragment_dogs_list_empty_label.visibility = View.VISIBLE
             fragment_dogs_list.visibility = View.GONE
-            fragment_dogs_list_swipe_layout.isRefreshing = false
-        }
-
-        is DogsViewModel.State.Loaded -> {
+        } else {
             fragment_dogs_list_empty_label.visibility = View.GONE
             fragment_dogs_list.visibility = View.VISIBLE
-            adapter.addDataToStart(state.albums)
-            fragment_dogs_list_swipe_layout.isRefreshing = false
         }
+
+        adapter.addDataToStart(state.breeds)
     }
 
     private fun getGridLayoutManager(): GridLayoutManager {
