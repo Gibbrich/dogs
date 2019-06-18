@@ -149,7 +149,7 @@ class DogsDataRepositoryTest {
         // change data in db
         every { db.breedDao().getBreeds() } returns Single.just(dbBreeds2.sortedBy(DBBreed::name))
 
-        // call repository.getAlbums(false) cache returns old data
+        // call repository.getRandomBreeds(false) cache returns old data
         repository
             .getRandomBreeds(photosQuantity)
             .test()
@@ -161,7 +161,7 @@ class DogsDataRepositoryTest {
             }
             .assertComplete()
 
-        // call repository.getAlbums(true), returns new data + cached data
+        // call repository.getRandomBreeds(true), returns new data + cached data
         repository
             .getRandomBreeds(photosQuantity, true)
             .test()
@@ -179,7 +179,7 @@ class DogsDataRepositoryTest {
         // turn on api calls
         every { api.getPhotos(photosQuantity) } returns Single.just(photosResponse2)
 
-        // call repository.getAlbums(false) cache returns new cached data
+        // call repository.getRandomBreeds(false) cache returns new cached data
         repository
             .getRandomBreeds(photosQuantity, true)
             .test()

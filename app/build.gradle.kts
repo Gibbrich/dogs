@@ -48,7 +48,4 @@ dependencies {
     androidTestImplementation(Deps.test.androidTestRunner)
     androidTestImplementation(Deps.test.androidTestRules)
     androidTestImplementation(Deps.test.espresso)
-
-    // todo - here and in other build files - clean up dependencies
-    implementation("androidx.core:core-ktx:1.0.0-rc02")
 }

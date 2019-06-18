@@ -16,10 +16,8 @@ class DBModule {
     fun provideDB(
         context: Context
     ): AppDatabase {
-        // todo - check and remove main thread db calls
         return Room
             .databaseBuilder(context, AppDatabase::class.java, "dogs_db")
-            .allowMainThreadQueries()
             .build()
     }
 }

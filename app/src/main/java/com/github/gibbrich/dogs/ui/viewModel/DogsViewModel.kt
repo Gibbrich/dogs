@@ -24,7 +24,7 @@ class DogsViewModel: BaseViewModel() {
         state.value = State.Empty
     }
 
-    fun fetchAlbums() {
+    fun fetchBreeds() {
         safeSubscribe {
             dogsRepository
                 .getRandomBreeds(PHOTOS_TO_FETCH, isFirstPhotosLoad.not())
@@ -34,12 +34,12 @@ class DogsViewModel: BaseViewModel() {
         }
     }
 
-    private fun handleAnswer(albums: List<Breed>) {
+    private fun handleAnswer(breeds: List<Breed>) {
         if (isFirstPhotosLoad) {
             isFirstPhotosLoad = false
         }
 
-        state.value = State.Loaded(albums)
+        state.value = State.Loaded(breeds)
     }
 
     private fun handleError(err: Throwable) {
@@ -50,6 +50,6 @@ class DogsViewModel: BaseViewModel() {
         object LoadError: State()
         object Loading: State()
         object Empty: State()
-        data class Loaded(val albums: List<Breed>): State()
+        data class Loaded(val breeds: List<Breed>): State()
     }
 }

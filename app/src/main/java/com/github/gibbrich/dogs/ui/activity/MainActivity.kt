@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val vm = ViewModelProviders.of(this).get(DogsViewModel::class.java)
         vm.state.observe(this, Observer(::handleState))
 
-        activity_main_swipe_layout.setOnRefreshListener(vm::fetchAlbums)
+        activity_main_swipe_layout.setOnRefreshListener(vm::fetchBreeds)
 
         activity_main_dogs_list.layoutManager = getGridLayoutManager()
         adapter = DogsAdapter(onDogClicked = this::switchToBreedDetailScreen)
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         is DogsViewModel.State.Loaded -> {
             activity_main_empty_label.visibility = View.GONE
             activity_main_dogs_list.visibility = View.VISIBLE
-            adapter.addDataToStart(state.albums)
+            adapter.addDataToStart(state.breeds)
             activity_main_swipe_layout.isRefreshing = false
         }
     }

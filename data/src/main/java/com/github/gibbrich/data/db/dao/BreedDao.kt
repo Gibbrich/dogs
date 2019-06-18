@@ -13,5 +13,5 @@ interface BreedDao {
     fun getBreeds(): Single<List<DBBreed>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(albums: List<DBBreed>)
+    fun insert(breeds: List<DBBreed>)
 }

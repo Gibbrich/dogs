@@ -11,7 +11,7 @@ object DogsConverter {
     fun toDB(data: Breed): DBBreed = DBBreed(data.name, data.photoUrl)
 
     fun fromNetwork(data: NWPhotosResponse): List<Breed> {
-        val breeds = getOrDie(data.message, "message")
+        val breeds = data.message ?: return emptyList()
         return breeds.map(this::fromUrl)
     }
 
