@@ -2,6 +2,7 @@ package com.github.gibbrich.dogs.ui.adapter
 
 import android.view.View
 import android.widget.ImageView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.github.gibbrich.core.model.Breed

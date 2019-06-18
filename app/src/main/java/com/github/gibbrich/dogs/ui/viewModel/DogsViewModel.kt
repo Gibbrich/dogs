@@ -17,42 +17,39 @@ class DogsViewModel: BaseViewModel() {
     @Inject
     internal lateinit var dogsRepository: DogsRepository
 
+    private var isFirstPhotosLoad = true
+
     init {
         DI.appComponent.inject(this)
-        state.value = State()
+        state.value = State.Empty
     }
 
     fun fetchAlbums() {
-        val isCacheDirty = state.value?.isFirstPhotoLoad?.not() ?: false
         safeSubscribe {
             dogsRepository
-                .getRandomBreeds(PHOTOS_TO_FETCH, isCacheDirty)
+                .getRandomBreeds(PHOTOS_TO_FETCH, isFirstPhotosLoad.not())
                 .schedulersIoToMain()
-                .doOnSubscribe {
-                    state.value = state.value?.copy(isLoading = true)
-                }
+                .doOnSubscribe { state.value = State.Loading }
                 .subscribe(this::handleAnswer, this::handleError)
         }
     }
 
-    private fun handleAnswer(breeds: List<Breed>) {
-        state.value = State(
-            isFirstPhotoLoad = false,
-            breeds = breeds
-        )
+    private fun handleAnswer(albums: List<Breed>) {
+        if (isFirstPhotosLoad) {
+            isFirstPhotosLoad = false
+        }
+
+        state.value = State.Loaded(albums)
     }
 
     private fun handleError(err: Throwable) {
-        state.value = state.value?.copy(
-            isLoading = false,
-            isLoadError = true
-        )
+        state.value = State.LoadError
     }
 
-    data class State(
-        val isLoading: Boolean = false,
-        val isLoadError: Boolean = false,
-        val isFirstPhotoLoad: Boolean = true,
-        val breeds: List<Breed> = emptyList()
-    )
+    sealed class State {
+        object LoadError: State()
+        object Loading: State()
+        object Empty: State()
+        data class Loaded(val albums: List<Breed>): State()
+    }
 }

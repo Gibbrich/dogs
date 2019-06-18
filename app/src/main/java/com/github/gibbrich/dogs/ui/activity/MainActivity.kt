@@ -22,28 +22,37 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val vm = ViewModelProviders.of(this).get(DogsViewModel::class.java)
-        vm.state.observe(this, Observer(::handleStateNew))
+        vm.state.observe(this, Observer(::handleState))
 
-        fragment_dogs_list_swipe_layout.setOnRefreshListener(vm::fetchAlbums)
+        activity_main_swipe_layout.setOnRefreshListener(vm::fetchAlbums)
 
         activity_main_dogs_list.layoutManager = getGridLayoutManager()
         adapter = DogsAdapter(onDogClicked = this::switchToBreedDetailScreen)
         activity_main_dogs_list.adapter = adapter
     }
 
-
-    private fun handleStateNew(state: DogsViewModel.State) {
-        fragment_dogs_list_swipe_layout.isRefreshing = state.isLoading
-
-        if (state.breeds.isEmpty()) {
-            activity_main_empty_label.visibility = View.VISIBLE
-            activity_main_dogs_list.visibility = View.GONE
-        } else {
-            activity_main_empty_label.visibility = View.GONE
-            activity_main_dogs_list.visibility = View.VISIBLE
+    private fun handleState(state: DogsViewModel.State) = when (state) {
+        DogsViewModel.State.LoadError -> {
+            activity_main_swipe_layout.isRefreshing = false
         }
 
-        adapter.addDataToStart(state.breeds)
+        DogsViewModel.State.Loading -> {
+            activity_main_swipe_layout.isRefreshing = true
+        }
+
+        DogsViewModel.State.Empty -> {
+            activity_main_empty_label.text = getString(R.string.activity_main_no_data)
+            activity_main_empty_label.visibility = View.VISIBLE
+            activity_main_dogs_list.visibility = View.GONE
+            activity_main_swipe_layout.isRefreshing = false
+        }
+
+        is DogsViewModel.State.Loaded -> {
+            activity_main_empty_label.visibility = View.GONE
+            activity_main_dogs_list.visibility = View.VISIBLE
+            adapter.addDataToStart(state.albums)
+            activity_main_swipe_layout.isRefreshing = false
+        }
     }
 
     private fun getGridLayoutManager(): GridLayoutManager {

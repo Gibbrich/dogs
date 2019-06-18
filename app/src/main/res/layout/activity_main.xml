@@ -4,7 +4,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fragment_dogs_list_swipe_layout"
+        android:id="@+id/activity_main_swipe_layout"
         >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,7 +12,7 @@
             android:layout_height="match_parent">
 
         <TextView
-                android:text="@string/fragment_dogs_list_no_data"
+                android:text="@string/activity_main_no_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/activity_main_empty_label"

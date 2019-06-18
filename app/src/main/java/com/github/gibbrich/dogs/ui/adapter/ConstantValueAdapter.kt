@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class ConstantValueAdapter<T, VH : RecyclerView.ViewHolder>(
-    private val items: MutableList<T>
+    val items: MutableList<T>
 ) : RecyclerView.Adapter<VH>() {
 
     final override fun getItemCount() = items.size
@@ -28,5 +28,10 @@ abstract class ConstantValueAdapter<T, VH : RecyclerView.ViewHolder>(
     fun addDataToStart(data: List<T>) {
         items.addAll(0, data)
         notifyItemRangeChanged(0, data.size)
+    }
+
+    fun setData(data: List<T>) {
+        items.clear()
+        items.addAll(data)
     }
 }
