@@ -1,4 +1,4 @@
-package com.github.gibbrich.dogslist.ui.viewModel
+package com.github.gibbrich.dogs.ui.viewModel
 
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable

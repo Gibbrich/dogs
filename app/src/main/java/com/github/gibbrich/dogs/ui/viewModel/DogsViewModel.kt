@@ -1,11 +1,10 @@
-package com.github.gibbrich.dogslist.ui.viewModel
+package com.github.gibbrich.dogs.ui.viewModel
 
 import androidx.lifecycle.MutableLiveData
-import com.github.gibbrich.core.manager.Navigator
 import com.github.gibbrich.core.model.Breed
 import com.github.gibbrich.core.repository.DogsRepository
 import com.github.gibbrich.core.utils.schedulersIoToMain
-import com.github.gibbrich.dogslist.di.DI
+import com.github.gibbrich.dogs.di.DI
 import javax.inject.Inject
 
 class DogsViewModel: BaseViewModel() {
@@ -18,15 +17,10 @@ class DogsViewModel: BaseViewModel() {
     @Inject
     internal lateinit var dogsRepository: DogsRepository
 
-    @Inject
-    internal lateinit var navigator: Navigator
-
     init {
-        DI.dogsComponent.inject(this)
+        DI.appComponent.inject(this)
         state.value = State()
     }
-
-    fun onDogClicked(breed: Breed) = navigator.switchToBreedDetailScreen(breed)
 
     fun fetchAlbums() {
         val isCacheDirty = state.value?.isFirstPhotoLoad?.not() ?: false

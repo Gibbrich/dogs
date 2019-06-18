@@ -18,7 +18,7 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:name=".DogsApp" >
-        <activity android:name=".activity.MainActivity">
+        <activity android:name="com.github.gibbrich.dogs.ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

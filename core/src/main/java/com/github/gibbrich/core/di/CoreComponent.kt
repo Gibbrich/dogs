@@ -1,7 +1,6 @@
 package com.github.gibbrich.core.di
 
 import android.content.Context
-import com.github.gibbrich.core.manager.Navigator
 import dagger.Component
 
 @CoreScope
@@ -10,5 +9,4 @@ import dagger.Component
 ])
 interface CoreComponent {
     val context: Context
-    val navigator: Navigator
 }

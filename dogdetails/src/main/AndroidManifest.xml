@@ -1,1 +1,10 @@
-<manifest package="com.github.gibbrich.dogdetails"/>
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.github.gibbrich.dogdetails">
+
+    <application>
+        <activity android:name=".DogDetailActivity">
+        </activity>
+    </application>
+
+</manifest>

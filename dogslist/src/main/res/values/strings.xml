@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">DogsList</string>
-
-    <string name="fragment_dogs_list_no_data">No data</string>
-    <string name="fragment_dogs_list_title">Dogs</string>
-</resources>

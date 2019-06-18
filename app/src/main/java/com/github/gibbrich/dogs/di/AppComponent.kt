@@ -1,15 +1,15 @@
 package com.github.gibbrich.dogs.di
 
-import com.github.gibbrich.dogs.DogsApp
-import com.github.gibbrich.dogs.activity.MainActivity
+import com.github.gibbrich.data.di.DataComponent
+import com.github.gibbrich.dogs.ui.viewModel.DogsViewModel
 import dagger.Component
-import javax.inject.Singleton
 
-@Singleton
-@Component(modules = [
-    AppModule::class
-])
+@AppScope
+@Component(
+    dependencies = [
+        DataComponent::class
+    ]
+)
 interface AppComponent {
-    fun inject(entry: DogsApp)
-    fun inject(entry: MainActivity)
+    fun inject(dogsViewModel: DogsViewModel)
 }

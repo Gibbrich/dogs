@@ -1,11 +1,11 @@
-package com.github.gibbrich.dogslist.ui.adapter
+package com.github.gibbrich.dogs.ui.adapter
 
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.github.gibbrich.core.model.Breed
-import com.github.gibbrich.dogslist.R
+import com.github.gibbrich.dogs.R
 import kotlinx.android.synthetic.main.layout_list_dogs_item.view.*
 
 class DogsAdapter(

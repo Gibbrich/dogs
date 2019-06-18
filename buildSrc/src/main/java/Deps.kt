@@ -3,12 +3,6 @@ object Deps {
     const val gradle = "com.android.tools.build:gradle:3.3.2"
     const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
 
-    object app {
-        private const val navigationVersion = "2.0.0"
-        const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
-        const val navigationUi = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
-    }
-
     object common {
         const val constraint = "androidx.constraintlayout:constraintlayout:1.1.3"
         const val swipeRefresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"

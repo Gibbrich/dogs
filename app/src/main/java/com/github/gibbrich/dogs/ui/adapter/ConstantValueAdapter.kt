@@ -1,4 +1,4 @@
-package com.github.gibbrich.dogslist.ui.adapter
+package com.github.gibbrich.dogs.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View

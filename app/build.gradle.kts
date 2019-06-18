@@ -27,15 +27,27 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     implementation(project(":core"))
+    implementation(project(":data"))
     implementation(project(":dogdetails"))
-    implementation(project(":dogslist"))
 
     implementation(Deps.common.appCompat)
     implementation(Deps.common.constraint)
-    implementation(Deps.app.navigationFragment)
-    implementation(Deps.app.navigationUi)
+
+    implementation(Deps.common.swipeRefresh)
+    implementation(Deps.common.arch)
+    implementation(Deps.common.vm)
+    implementation(Deps.common.recycler)
+    implementation(Deps.common.cardView)
+    implementation(Deps.common.glide) {
+        exclude("com.android.support")
+    }
 
     kapt(Deps.core.daggerCompiler)
+
+    testImplementation(Deps.test.junit)
+    androidTestImplementation(Deps.test.androidTestRunner)
+    androidTestImplementation(Deps.test.androidTestRules)
+    androidTestImplementation(Deps.test.espresso)
 
     // todo - here and in other build files - clean up dependencies
     implementation("androidx.core:core-ktx:1.0.0-rc02")

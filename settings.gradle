@@ -1,1 +1,1 @@
-include ':app', ':dogdetails', ':data', ':core', ':dogslist'
+include ':app', ':dogdetails', ':data', ':core'
