@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.layout_list_dogs_item.view.*
 
 class DogsAdapter(
     items: MutableList<Breed> = mutableListOf(),
-    private val onDogClicked: (Breed) -> Unit
+    private val onDogClicked: (Breed, View) -> Unit
 ) : ConstantValueAdapter<Breed, DogsAdapter.Holder>(items) {
     override fun createHolder(view: View): Holder =
         Holder(view, view.list_dogs_item_breed_image)
@@ -23,7 +23,7 @@ class DogsAdapter(
             .centerCrop()
             .into(holder.picture)
 
-        holder.picture.setOnClickListener { onDogClicked.invoke(item) }
+        holder.picture.setOnClickListener { onDogClicked.invoke(item, it) }
     }
 
     class Holder(

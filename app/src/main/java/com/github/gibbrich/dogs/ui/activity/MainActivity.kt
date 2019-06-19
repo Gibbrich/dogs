@@ -3,6 +3,7 @@ package com.github.gibbrich.dogs.ui.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
@@ -75,8 +76,13 @@ class MainActivity : AppCompatActivity() {
         return glm
     }
 
-    private fun switchToBreedDetailScreen(breed: Breed) {
+    private fun switchToBreedDetailScreen(breed: Breed, view: View) {
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+            this,
+            view,
+            DogDetailActivity.BREED_IMAGE
+        ).toBundle()
         val intent = DogDetailActivity.getIntent(this, breed)
-        startActivity(intent)
+        startActivity(intent, options)
     }
 }
