@@ -9,7 +9,6 @@ App allows user to download dogs pictures. On picture click user can check detai
 - Dependencies and build logic are written in Kotlin script and should be placed in buildSrc module, which improves readability/comprehensibility of custom build logic.
 
 ## What can be improved/added from technical perspective:
-- Transition animation from breeds list to breed detail, using shared element transition for better UX
 - More UI and integration tests
 
 ## How to build and install app
