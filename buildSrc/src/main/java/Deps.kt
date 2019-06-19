@@ -21,6 +21,10 @@ object Deps {
         const val androidTestRunner = "com.android.support.test:runner:1.0.2"
         const val androidTestRules = "com.android.support.test:rules:1.0.2"
         const val espresso = "androidx.test.espresso:espresso-core:3.1.0-alpha4"
+        const val mockitoAndroid = "org.mockito:mockito-android:2.25.0"
+        const val mockitoCore = "org.mockito:mockito-core:2.8.9"
+        const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0"
+        const val dexOpener = "com.github.tmurakami:dexopener:2.0.2"
     }
 
     object core {

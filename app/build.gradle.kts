@@ -58,11 +58,14 @@ dependencies {
     androidTestImplementation(Deps.test.androidTestRules)
     androidTestImplementation(Deps.test.espresso)
 
-    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:3.0.2")
-    androidTestImplementation("com.android.support.test.espresso:espresso-intents:3.0.2")
-    androidTestImplementation("org.mockito:mockito-android:2.25.0")
-    androidTestImplementation("com.github.tmurakami:dexopener:2.0.2")
-    androidTestImplementation("org.mockito:mockito-core:2.8.9")
-    androidTestImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
-    kaptAndroidTest("com.google.dagger:dagger-compiler:${Deps.core.daggerVersion}")
+    // todo - fix deps
+
+//    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:3.0.2")
+//    androidTestImplementation("com.android.support.test.espresso:espresso-intents:3.0.2")
+
+    androidTestImplementation(Deps.test.dexOpener)
+    androidTestImplementation(Deps.test.mockitoCore)
+    androidTestImplementation(Deps.test.mockitoAndroid)
+    androidTestImplementation(Deps.test.mockitoKotlin)
+    kaptAndroidTest(Deps.core.daggerCompiler)
 }
