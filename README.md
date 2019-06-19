@@ -11,3 +11,19 @@ App allows user to download dogs pictures. On picture click user can check detai
 ## What can be improved/added from technical perspective:
 - Transition animation from breeds list to breed detail, using shared element transition for better UX
 - More UI and integration tests
+
+## How to build and install app
+Installs the Debug build
+
+    ./gradlew installDebug
+
+## How to test
+- Connect Android device or launch emulator
+
+- Install and run instrumentation tests on connected devices
+
+      ./gradlew connectedAndroidTest
+
+- Run unit tests
+
+      ./gradlew test
