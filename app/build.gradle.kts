@@ -13,7 +13,7 @@ android {
         targetSdkVersion(28)
         versionCode = 1
         versionName = "1.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.github.gibbrich.dogs.MockTestRunner"
     }
     buildTypes {
         getByName("release") {
@@ -21,6 +21,15 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
+repositories {
+    maven("https://jitpack.io")
 }
 
 dependencies {
@@ -48,4 +57,12 @@ dependencies {
     androidTestImplementation(Deps.test.androidTestRunner)
     androidTestImplementation(Deps.test.androidTestRules)
     androidTestImplementation(Deps.test.espresso)
+
+    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:3.0.2")
+    androidTestImplementation("com.android.support.test.espresso:espresso-intents:3.0.2")
+    androidTestImplementation("org.mockito:mockito-android:2.25.0")
+    androidTestImplementation("com.github.tmurakami:dexopener:2.0.2")
+    androidTestImplementation("org.mockito:mockito-core:2.8.9")
+    androidTestImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
+    kaptAndroidTest("com.google.dagger:dagger-compiler:${Deps.core.daggerVersion}")
 }

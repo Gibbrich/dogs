@@ -24,7 +24,7 @@ object Deps {
     }
 
     object core {
-        private const val daggerVersion = "2.13"
+        const val daggerVersion = "2.13"
         private const val rx2JavaVersion = "2.1.6"
         private const val rx2AndroidVersion = "2.0.1"
 

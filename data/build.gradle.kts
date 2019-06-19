@@ -22,6 +22,11 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -49,4 +54,5 @@ dependencies {
     testImplementation(Deps.test.mockk)
 
     androidTestImplementation(Deps.test.androidTestRunner)
+    kaptAndroidTest(Deps.data.roomCompiler)
 }

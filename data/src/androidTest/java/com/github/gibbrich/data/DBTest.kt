@@ -54,7 +54,7 @@ class DBTest {
             .getBreeds()
             .test()
             .assertValue {
-                it == dbBreeds.sortedBy(DBBreed::name)
+                it == it.sortedBy(DBBreed::name)
             }
     }
 }
