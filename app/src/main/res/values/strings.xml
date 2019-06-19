@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Dogs</string>
 
-    <string name="activity_main_no_data">No data</string>
+    <string name="activity_main_no_data">No data\n Pull to update</string>
     <string name="activity_main_title">Dogs</string>
 </resources>
